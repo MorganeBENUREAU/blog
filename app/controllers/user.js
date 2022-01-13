@@ -26,13 +26,13 @@ const userController = {
     },
 
 
-    getParentById: async (request, response, next) => {
+    getUserById: async (request, response, next) => {
         try {
             // get parent id from url
-            const parentId = Number(request.params.id);
+            const userId = Number(request.params.id);
 
             // get all of one parent's children - thanks to a sql view, we get infos about the parent and infos about their children
-            const data = await userDataMapper.findChildrenByParent(parentId);
+            const data = await userDataMapper.findById(userId);
 
             // if there is data, we respond with it; if not, we return next()
             if (data) {
@@ -55,21 +55,24 @@ const userController = {
 
             // get the password from the request.body
             const password = request.body.password;
-
+       
+          
             // using emailValidator to check if the email is a valid one
             if (!emailValidator.validate(request.body.email)) {
                 return response.status(400).json({ error: "Cet email n'est pas valide." });
             };
-
+          
             // find the user by their email
             const user = await userDataMapper.findOne(email);
 
+           
             // in case the user is null, we send an error
             if (user === null) {
                 response.status(400).json({ error: "Email ou mot de passe incorrect" });
                 return;
             };
 
+            
             // check if password is valid thanks to bcrypt's compare function
             const pwResult = bcrypt.compareSync(password, user.password);
 

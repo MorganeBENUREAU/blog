@@ -1,7 +1,7 @@
-const adminDataMapper = require('./admin');
+// const adminDataMapper = require('./admin');
 const userDataMapper = require('./user');
 
 module.exports = {
-    adminDataMapper,
+    // adminDataMapper,
     userDataMapper
 };

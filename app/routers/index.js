@@ -1,12 +1,23 @@
 const express = require('express');
 
-// const adminRouter = require('./admin');
-// const { errorController, userController, authController } = require('../controllers');
+const userRouter = require('./user');
+
+const { errorController, userController } = require('../controllers');
 
 const router = express.Router();
 
-// router.use(adminRouter);
 
+router.use(userRouter);
+
+
+router.route('/login')
+    .post(userController.checkLogin);
+
+
+router.get('/logout', userController.logout);
+
+    
 router.use(errorController.notFoundResource);
+
 
 module.exports = router;

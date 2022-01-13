@@ -1,0 +1,60 @@
+## TEST HTTP
+
+### API error 404
+GET http://localhost:3000/rdfhf
+
+
+### ADDING A USER
+POST http://localhost:3000/signup
+Content-Type: application/json
+
+{
+    "email": "testingadd@blog.io",
+    "password": "testingadd",
+    "passwordConfirm": "testingadd",
+    "firstname": "testingadd",
+    "lastname": "testingadd"
+}
+
+### try login 
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "admin@monblog.io",
+    "password": "admin"
+}
+
+
+### try login wrong password 
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "admin@monblog.io",
+    "password": "test"
+}
+
+### Modify password
+PATCH http://localhost:3000/profile/2/password
+Content-Type: application/json
+
+{
+    "email": "user@monblog.io",
+    "password": "test"
+}
+
+### GET user by id
+GET http://localhost:3000/profile/2
+
+
+### Modify an user by it's id
+PATCH http://localhost:3000/profile/2
+Content-Type: application/json
+
+{
+    
+    "first_name": "jeanMichel", 
+    "last_name": "maurice",
+    "email": "user@monblog.io"
+}

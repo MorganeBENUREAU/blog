@@ -12,16 +12,15 @@ const userDataMapper = {
         return result.rows[0];
     },
 
-    
-    async modifyChild(child, id) {
-        let query = `UPDATE "child" SET `;
+    async modifyUser(user, id) {
+        let query = `UPDATE "user" SET `;
         const values = [];
 
-        const keys = Object.keys(child);
+        const keys = Object.keys(user);
 
         for (let i = 0; i < keys.length; i++) {
             query += `"${keys[i]}" = $${i + 1}, `;
-            values.push(child[keys[i]]);
+            values.push(user[keys[i]]);
         };
 
         query += `updated_at = now() WHERE id = $${keys.length + 1} RETURNING *;`;
@@ -33,12 +32,8 @@ const userDataMapper = {
     },
 
     async findOne(email) {
+        console.log(email);
         const result = await client.query('SELECT * FROM "user" WHERE email = $1', [email]);
-        return result.rows[0];
-    },
-
-    async findById(id) {
-        const result = await client.query('SELECT * FROM "user" WHERE id = $1', [id]);
         return result.rows[0];
     },
 
@@ -48,7 +43,7 @@ const userDataMapper = {
     },
 
     async updateUser(user, id) {
-        const result = await client.query('UPDATE "user" SET address = $1, postcode = $2, city = $3, phone_number = $4, updated_at = now() WHERE id = $5 RETURNING *', [user.address, user.postcode, user.city, user.phone_number, id]);
+        const result = await client.query('UPDATE "user" SET first_name = $1, last_name = $2, email = $3, updated_at = now() WHERE id = $4 RETURNING *', [user.first_name, user.last_name, user.email, id]);
         return result.rows[0];
     },
 
