@@ -4,7 +4,7 @@
 GET http://localhost:3000/rdfhf
 
 
-### ADDING A USER
+### ADDING A USER 
 POST http://localhost:3000/signup
 Content-Type: application/json
 
@@ -41,20 +41,21 @@ Content-Type: application/json
 
 {
     "email": "user@monblog.io",
-    "password": "test"
+    "oldPassword": "test",
+    "password": "user"
 }
 
 ### GET user by id
 GET http://localhost:3000/profile/2
 
 
-### Modify an user by it's id
+### Modify an user by it's id -- a voir "cannot set property user of undefined"
 PATCH http://localhost:3000/profile/2
 Content-Type: application/json
 
 {
     
-    "first_name": "jeanMichel", 
-    "last_name": "maurice",
+    "firstname": "jetestelamodif", 
+    "lastname": "maurice",
     "email": "user@monblog.io"
 }

@@ -1,6 +1,8 @@
 const express = require('express');
 
 const userRouter = require('./user');
+const postRouter = require('./post');
+const commentRouter = require('./comment');
 
 const { errorController, userController } = require('../controllers');
 
@@ -8,6 +10,12 @@ const router = express.Router();
 
 
 router.use(userRouter);
+router.use(postRouter);
+router.use(commentRouter);
+
+
+router.route('/signup')
+    .post(userController.registerSave);
 
 
 router.route('/login')

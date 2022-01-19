@@ -1,6 +1,6 @@
 BEGIN;
 
-INSERT INTO "user" ("first_name", "last_name", "email", "password", "role_id") VALUES
+INSERT INTO "user" ("firstname", "lastname", "email", "password", "role_id") VALUES
 ('Admin', 'test','admin@monblog.io', '$2a$12$UNDFj3MhhKk7wIyRBkbEtuKN6F7NoVHy7Xx8tRWi6q5LWoxvQNfoy', 1),
 ('User', 'test','user@monblog.io', '$2a$12$xfJWfMwlEIQe1fJxf0tli.S.6WpIdQmbt2rYKRijYMns9L/yeCRhu', 2);
 
@@ -10,8 +10,8 @@ INSERT INTO "post" ("title", "content") VALUES
 INSERT INTO "category" ("label") VALUES 
 ('général'), ('technologies');
 
-INSERT INTO "comment" ("comment", "user_id") VALUES 
-('boooouuuh', 2);
+INSERT INTO "comment" ("comment", "post_id", "user_id") VALUES 
+('boooouuuh', 1, 2);
 
 INSERT INTO "user_has_post" ("user_id", "post_id") VALUES 
 (2, 1);

@@ -13,11 +13,11 @@ CREATE TABLE "role" (
 
 CREATE TABLE "user" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "first_name" TEXT NOT NULL,
-    "last_name" TEXT NOT NULL,
+    "firstname" TEXT NOT NULL,
+    "lastname" TEXT NOT NULL,
     "email" email NOT NULL UNIQUE,
     "password" TEXT NOT NULL,
-    "role_id" INT NOT NULL REFERENCES "role"("id") ON DELETE CASCADE,
+    "role_id" INT NOT NULL DEFAULT '2' REFERENCES "role"("id") ON DELETE CASCADE,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
 );
@@ -41,6 +41,7 @@ CREATE TABLE "category" (
 CREATE TABLE "comment" (
     "id" integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "comment" TEXT NOT NULL,
+    "post_id" INT NOT NULL REFERENCES "post"("id") ON DELETE CASCADE,
     "user_id" INT NOT NULL REFERENCES "user"("id") ON DELETE CASCADE,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ

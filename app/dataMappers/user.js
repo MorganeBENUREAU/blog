@@ -32,7 +32,6 @@ const userDataMapper = {
     },
 
     async findOne(email) {
-        console.log(email);
         const result = await client.query('SELECT * FROM "user" WHERE email = $1', [email]);
         return result.rows[0];
     },
@@ -43,7 +42,18 @@ const userDataMapper = {
     },
 
     async updateUser(user, id) {
-        const result = await client.query('UPDATE "user" SET first_name = $1, last_name = $2, email = $3, updated_at = now() WHERE id = $4 RETURNING *', [user.first_name, user.last_name, user.email, id]);
+        const result = await client.query('UPDATE "user" SET firstname = $1, lastname = $2, email = $3, updated_at = now() WHERE id = $4 RETURNING *', [user.firstname, user.lastname, user.email, id]);
+        return result.rows[0];
+    },
+
+    async countEmail (email) {
+        const result = await client.query('SELECT COUNT(*) FROM "user" WHERE email = $1', [email]);
+        return result.rows[0];
+    },
+
+    async insertOne (data) {
+        const result = await client.query('INSERT INTO "user" (email, password, firstname, lastname) VALUES ($1, $2, $3, $4) RETURNING *', [data.email, data.password, data.firstname, data.lastname]);
+
         return result.rows[0];
     },
 

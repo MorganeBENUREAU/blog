@@ -1,0 +1,31 @@
+## TEST POST
+
+
+### GET all posts
+GET http://localhost:3000/post
+
+
+### GET one post
+GET http://localhost:3000/post/1
+
+### ADDING a post 
+POST http://localhost:3000/post
+Content-Type: application/json
+
+{
+    "title": "ajout d'un post",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing"
+}
+
+### MODIFY one post
+PATCH http://localhost:3000/post/2
+Content-Type: application/json
+
+{
+    "title": "test title",
+    "content": "lorem ipsum dolor sit amet, consectetur adip"
+}
+
+
+### DELETE one post
+DELETE http://localhost:3000/post/2

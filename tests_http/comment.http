@@ -1,0 +1,27 @@
+## TEST COMMENT
+
+
+### GET all comment for one post
+GET http://localhost:3000/post/1/comment
+
+
+### ADDING a comment 
+POST http://localhost:3000/post/2/comment
+Content-Type: application/json
+
+{
+    "comment": "test comment"
+}
+
+### MODIFY one comment
+PATCH http://localhost:3000/post/2/comment/2
+Content-Type: application/json
+
+{
+    "comment": "test modif comment",
+    "user_id": 2
+}
+
+
+### DELETE one comment
+DELETE http://localhost:3000/post/2/comment/2
