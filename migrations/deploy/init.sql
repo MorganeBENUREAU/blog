@@ -42,7 +42,6 @@ CREATE TABLE "comment" (
     "id" integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "comment" TEXT NOT NULL,
     "post_id" INT NOT NULL REFERENCES "post"("id") ON DELETE CASCADE,
-    "user_id" INT NOT NULL REFERENCES "user"("id") ON DELETE CASCADE,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
 );

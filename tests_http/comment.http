@@ -18,10 +18,9 @@ PATCH http://localhost:3000/post/2/comment/2
 Content-Type: application/json
 
 {
-    "comment": "test modif comment",
-    "user_id": 2
+    "comment": "test modif comment"
 }
 
 
 ### DELETE one comment
-DELETE http://localhost:3000/post/2/comment/2
+DELETE http://localhost:3000/post/2/comment/5

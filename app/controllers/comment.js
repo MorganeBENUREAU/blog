@@ -7,7 +7,6 @@ const commentController = {
 
             // get post id from url
             const postId = Number(request.params.id);
-            console.log(postId);
 
             // in case the post id isn't a number, we return next()
             if (isNaN(postId)) {
@@ -15,7 +14,6 @@ const commentController = {
             };
 
             const comments = await commentDataMapper.findAll(postId);
-            console.log(comments);
 
             // if there is data, we respond with it; if not, we return next()
             if (comments) {
@@ -43,18 +41,9 @@ const commentController = {
                 return next();
             };
 
-            // get comment id from url
-            const commentId = Number(request.params.commentId);
-            console.log(commentId);
-
-            // in case the comment id isn't a number, we return next()
-            if (isNaN(commentId)) {
-                return next();
-            };
-
             // add a new comment thanks to request.body and comment id
-            const newComment = await commentDataMapper.add({ ...newData }, commentId);
-            console.log(newComment);
+            const newComment = await commentDataMapper.add({ ...newData }, postId);
+
 
             // if there is no newComment, we return next()
             if (!newComment) {

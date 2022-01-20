@@ -9,7 +9,7 @@ router.route('/post/:id(\\d+)/comment')
     .get(commentController.allCommentsForOnePost)
     .post(commentController.addComment)
 
-router.route('/post/:id(\\d+)/comment/:id(\\d+)')
+router.route('/post/:id(\\d+)/comment/:commentId(\\d+)')
     .patch(commentController.updateComment)
     .delete(commentController.deleteComment);
 

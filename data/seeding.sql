@@ -10,8 +10,8 @@ INSERT INTO "post" ("title", "content") VALUES
 INSERT INTO "category" ("label") VALUES 
 ('général'), ('technologies');
 
-INSERT INTO "comment" ("comment", "post_id", "user_id") VALUES 
-('boooouuuh', 1, 2);
+INSERT INTO "comment" ("comment", "post_id") VALUES 
+('boooouuuh', 1);
 
 INSERT INTO "user_has_post" ("user_id", "post_id") VALUES 
 (2, 1);
