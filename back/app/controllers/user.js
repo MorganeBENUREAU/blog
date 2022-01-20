@@ -225,7 +225,7 @@ const userController = {
     registerSave: async (request, response) => {
 
         try {
-            console.log(request.body);
+            // console.log(request.body);
             // Vérifier la cohérences des données
             const firstname = request.body.firstname;
             const lastname = request.body.lastname;
@@ -235,7 +235,7 @@ const userController = {
 
 
             const errors = [];
-            console.log(firstname.length);
+            // console.log(firstname.length);
 
             // On regarde la taille de la chaine de caractère
             if (firstname.length === 0) {

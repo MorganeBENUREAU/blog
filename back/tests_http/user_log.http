@@ -36,13 +36,13 @@ Content-Type: application/json
 }
 
 ### Modify password
-PATCH http://localhost:3000/profile/2/password
+PATCH http://localhost:3000/profile/3/password
 Content-Type: application/json
 
 {
-    "email": "user@monblog.io",
-    "oldPassword": "test",
-    "password": "user"
+    "email": "testingadd@blog.io",
+    "oldPassword": "testingadd",
+    "password": "testing"
 }
 
 ### GET user by id
