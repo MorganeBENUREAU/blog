@@ -1,0 +1,29 @@
+## TEST CATEGORY
+
+
+### GET all catgory
+GET http://localhost:3000/category
+
+### GET one catgory by its id
+GET http://localhost:3000/category/1
+
+
+### ADDING a category 
+POST http://localhost:3000/category
+Content-Type: application/json
+
+{
+    "label": "test category"
+}
+
+### MODIFY one category
+PATCH http://localhost:3000/category/3
+Content-Type: application/json
+
+{
+    "label": "test modif category"
+}
+
+
+### DELETE one comment
+DELETE http://localhost:3000/category/5
