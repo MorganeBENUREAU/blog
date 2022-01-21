@@ -18,13 +18,9 @@ const App = () => {
 
         <Routes>
 
-            <Route path='/' exact >
-                <Accueil/>
-            </Route>
+            <Route path='/' exact element={<Accueil />} />
 
-            <Route>
-                <Page404 />
-            </Route>
+            <Route path='*' element={<Page404 />} />
 
         </Routes>
 
