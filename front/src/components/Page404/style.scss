@@ -1,25 +1,29 @@
 .page404 {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    width: 70%;
+    align-items: center;
+    align-content: center;
+    border: 1px solid red;
+
 
     h2 {
         font-size: 4rem;
         text-shadow: 1px 1px 4px black;
         font-weight: bold;
-        width: 100%;
         text-align: center;
         padding: 0.6rem;
+        border: 1px solid green;
+        margin: 2rem 0;
     }
 
     p {
         font-size: 3rem;
         text-shadow: 1px 1px 4px black;
         font-weight: bold;
-        width: 100%;
         text-align: center;
         padding: 0.6rem;
+        border: 1px solid blue;
+        margin: 2rem 0;
     }
 
     .button {
@@ -28,9 +32,10 @@
         text-shadow: 1px 1px 4px black;
         font-weight: bold;
         width: 126px;
-        margin: 0 auto;
         text-align: center;
         padding: 0.6rem;
+        border: 1px solid pink;
+        margin: 2rem 0;
     }
 
 }
