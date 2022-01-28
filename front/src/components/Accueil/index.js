@@ -1,35 +1,49 @@
 import './style.scss';
 
 import axios from "axios";
-import { useState, useEffect } from 'react' ;
+import { useState, useEffect } from 'react';
+import { formatDate } from '../../utils';
 
 
 const Accueil = () => {
     // declarer un use state pour enregistrer la reponse
-    const [count, setCount] = useState([]);
+    const [posts, setPosts] = useState([]);
     useEffect(() => {
-        const options = {
-            method: 'GET',
-            url: 'http://localhost:3000/post',
-            headers: {
-                cookie: 'connect.sid=s%253ADKdPyNdNLRoVJwGhLgkS1Bva0yE0zhrv.b5Gkm5f3Qu8nWXkeAvy%252BhjSl5WfpAsOohUWREvHgEUg'
-            }
-            };
+        axios.get('http://localhost:3000/post')
+            .then(
+                (response) => {
+                    console.log(response);
+                    // change le state avec la reponse
+                    setPosts(response.data);
+            })
+            .catch ((error) => {
+                    console.log(error);
+            });
         
-            axios.request(options).then(function (response) {
-                // change le state avec la reponse
-                setCount(response.data);
-            }).catch(function (error) {
-            console.error(error);
-        });
-        // afficher le nouveau state
-        console.log(count);
-        // Mapper sur le state
-    })
+        
+    }, []);
     
+    // console logguer le nouveau state
+    console.log('ici les posts', posts);
+    // Mapper sur le state dans le return suivant car afficher des choses
+
     return (
         <div className="accueil">
-        
+
+            {posts.map((post) => {
+
+                return (
+                    <div key={post.id}>
+                        <h3>{post.title}</h3>
+                        <p>{post.content}</p>
+                        <p>{post.updated_at ? formatDate(post.updated_at) : formatDate(post.created_at)}</p>
+                        {/* Si post.image=true return post.image sinon rien */}
+                        <div>{post.image && post.image}</div>
+                    </div>
+                )}
+            )}
+            
+            
         </div>
     )
 };
