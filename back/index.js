@@ -2,8 +2,14 @@ require('dotenv').config();
 
 const express = require('express');
 const session = require('express-session');
+const cors = require('cors');
 
 const app = express();
+
+app.use(cors({
+    origin: '*'
+    // la bonne pratique : origin: 'https://notabebe.netlify.app/'
+}));
 
 const port = process.env.PORT || 3000;
 
