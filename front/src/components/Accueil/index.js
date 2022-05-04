@@ -4,6 +4,9 @@ import axios from "axios";
 import { useState, useEffect } from 'react';
 import { formatDate } from '../../utils';
 
+import Logo from '../Logo';
+import Navigation from '../Navigation';
+
 
 const Accueil = () => {
     // declarer un use state pour enregistrer la reponse
@@ -30,19 +33,26 @@ const Accueil = () => {
     return (
         <div className="accueil">
 
-            {posts.map((post) => {
+            <Logo />
 
-                return (
-                    <div key={post.id}>
-                        <h3>{post.title}</h3>
-                        <p>{post.content}</p>
-                        <p>{post.updated_at ? formatDate(post.updated_at) : formatDate(post.created_at)}</p>
-                        {/* Si post.image=true return post.image sinon rien */}
-                        <div>{post.image && post.image}</div>
-                    </div>
+            <Navigation />
+
+            <div className="container_all-posts">
+
+                {posts.map((post) => {
+
+                    return (
+                        
+                        <div className="container_one-post" key={post.id}>
+                            <h3 className="post_title">{post.title}</h3>
+                            <p className="post_content">{post.content}</p>
+                            <p className="post_updated-at">{post.updated_at ? formatDate(post.updated_at) : formatDate(post.created_at)}</p>
+                            {/* Si post.image=true return post.image sinon rien */}
+                            <div>{post.image && post.image}</div>
+                        </div>
+                    )}
                 )}
-            )}
-            
+            </div>
             
         </div>
     )
