@@ -2,15 +2,16 @@ import './style.scss';
 
 import axios from "axios";
 import { useState, useEffect } from 'react';
-import { formatDate } from '../../utils';
 
 import Logo from '../Logo';
 import Navigation from '../Navigation';
+import Post from '../Post';
 
 
 const Accueil = () => {
     // declarer un use state pour enregistrer la reponse
     const [posts, setPosts] = useState([]);
+    // Le use effect se joue quand le composant est monté
     useEffect(() => {
         axios.get('http://localhost:3000/post')
             .then(
@@ -39,19 +40,9 @@ const Accueil = () => {
 
             <div className="container_all-posts">
 
-                {posts.map((post) => {
-
-                    return (
-                        
-                        <div className="container_one-post" key={post.id}>
-                            <h3 className="post_title">{post.title}</h3>
-                            <p className="post_content">{post.content}</p>
-                            <p className="post_updated-at">{post.updated_at ? formatDate(post.updated_at) : formatDate(post.created_at)}</p>
-                            {/* Si post.image=true return post.image sinon rien */}
-                            <div>{post.image && post.image}</div>
-                        </div>
-                    )}
-                )}
+                {posts.map((post) => (
+                    <Post post={post} key={post.id}/>
+                ))}
             </div>
             
         </div>
